@@ -1,25 +1,34 @@
-var express = require('express');
+var express = require("express");
+var Mock = require('mockjs')
+
 var router = express.Router();
-
-/* GET home page. */
-router.get('/activity/ssg/activity/ssg/api/v1/users/addresses?isMock=true', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/activity/ssg/activity/ssg/api/v1/users/addresses?isMock=true", function(
+    req,
+    res,
+    next
+) {
+    res.render("index", { title: "Express" });
 });
 
-
-
-router.get('/api/swagger', function(req, res, next) {
-  res.send('sas');
+router.get("/address", function(req, res, next) {
+    var data = Mock.mock({
+        "list|1-10": [
+            {
+                "id|+1": 1,
+                province: "@province",
+                city:"@city()"
+            },
+        ],
+    });
+    res.send(JSON.stringify(data, null, 4));
 });
 
-
-router.get('/api/mock', function(req, res, next) {
-  res.send('sasmock');
+router.get("/api/mock", function(req, res, next) {
+    res.send("sasmock");
 });
 
-
-router.get('/api/v1/users/addresses', function(req, res, next) {
-  res.send('sas');
+router.get("/api/v1/users/addresses", function(req, res, next) {
+    res.send("sas");
 });
 
 module.exports = router;

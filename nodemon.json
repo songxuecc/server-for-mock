@@ -1,0 +1,11 @@
+{
+    "verbose": true,
+    "ignore": [".git", "fixtures/*"],
+    "execMap": {
+      "rb": "ruby",
+      "pde": "processing --sketch={{pwd}} --run"
+    },
+    "env": {
+        "NODE_ENV": "development"
+    }
+  }
